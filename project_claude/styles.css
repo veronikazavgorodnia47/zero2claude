@@ -296,23 +296,98 @@ select:focus {
   text-decoration: underline;
 }
 
-.delete-btn {
+.delete-btn,
+.edit-btn {
   flex-shrink: 0;
   background: none;
   border: 1.5px solid #e0e0e5;
   border-radius: 7px;
-  padding: 6px 12px;
-  font-size: 0.82rem;
-  color: #888;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
   cursor: pointer;
-  font-family: inherit;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
+  padding: 0;
 }
 
 .delete-btn:hover {
   border-color: #ff3b30;
   color: #ff3b30;
   background: #fff5f5;
+}
+
+/* Card action buttons (Edit + Delete) */
+.card-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.edit-btn:hover {
+  border-color: #1d1d1f;
+  color: #1d1d1f;
+}
+
+/* Inline edit state */
+.bookmark-item.editing {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-fields input,
+.edit-fields select {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.save-btn {
+  padding: 7px 16px;
+  background: #1d1d1f;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.save-btn:hover {
+  background: #333;
+}
+
+.cancel-btn {
+  padding: 7px 16px;
+  background: none;
+  border: 1.5px solid #e0e0e5;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #888;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.cancel-btn:hover {
+  border-color: #1d1d1f;
+  color: #1d1d1f;
 }
 
 #empty-msg {
@@ -362,6 +437,15 @@ body.dark .bookmark-url:hover { color: #f0f0f0; }
 body.dark .delete-btn { border-color: #2a2a2e; color: #666; }
 body.dark .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
 
+body.dark .edit-btn { border-color: #2a2a2e; color: #666; }
+body.dark .edit-btn:hover { border-color: #f0f0f0; color: #f0f0f0; }
+
+body.dark .cancel-btn { border-color: #2a2a2e; color: #666; }
+body.dark .cancel-btn:hover { border-color: #f0f0f0; color: #f0f0f0; }
+
+body.dark .save-btn { background: #f0f0f0; color: #0e0e10; }
+body.dark .save-btn:hover { background: #ccc; }
+
 body.dark #search {
   background: #0e0e10;
   border-color: #2a2a2e;
@@ -409,6 +493,12 @@ body.dark #theme-toggle:hover { border-color: #f0f0f0; }
   body:not(.light) .bookmark-url:hover { color: #f0f0f0; }
   body:not(.light) .delete-btn { border-color: #2a2a2e; color: #666; }
   body:not(.light) .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
+  body:not(.light) .edit-btn { border-color: #2a2a2e; color: #666; }
+  body:not(.light) .edit-btn:hover { border-color: #f0f0f0; color: #f0f0f0; }
+  body:not(.light) .cancel-btn { border-color: #2a2a2e; color: #666; }
+  body:not(.light) .cancel-btn:hover { border-color: #f0f0f0; color: #f0f0f0; }
+  body:not(.light) .save-btn { background: #f0f0f0; color: #0e0e10; }
+  body:not(.light) .save-btn:hover { background: #ccc; }
   body:not(.light) #search { background: #0e0e10; border-color: #2a2a2e; color: #f0f0f0; }
   body:not(.light) #search:focus { border-color: #f0f0f0; background: #0e0e10; }
   body:not(.light) select { background: #0e0e10; border-color: #2a2a2e; color: #f0f0f0; }
