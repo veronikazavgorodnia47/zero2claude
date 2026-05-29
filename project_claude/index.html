@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmark Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">Bookmarks</span>
+    </div>
+  </nav>
+
+  <main>
+    <section class="form-section">
+      <h2>Add Bookmark</h2>
+      <form id="bookmark-form">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" placeholder="e.g. GitHub" required />
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <input type="url" id="url" placeholder="https://example.com" required />
+        </div>
+        <button type="submit">Add Bookmark</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Saved Bookmarks <span id="count"></span></h2>
+      <ul id="bookmark-list"></ul>
+      <p id="empty-msg">No bookmarks yet. Add one above.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
