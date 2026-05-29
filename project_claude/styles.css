@@ -126,6 +126,43 @@ button[type="submit"]:hover {
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.list-header h2 {
+  margin-bottom: 0;
+}
+
+#search {
+  padding: 7px 12px;
+  border: 1.5px solid #e0e0e5;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-family: inherit;
+  background: #fafafa;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 200px;
+}
+
+#search:focus {
+  border-color: #1d1d1f;
+  background: #fff;
+}
+
+#no-results {
+  color: #aaa;
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 20px 0;
+  display: none;
+}
+
 #bookmark-list {
   list-style: none;
   display: flex;
@@ -243,4 +280,15 @@ button[type="submit"]:hover {
 
   .delete-btn { border-color: #2a2a2e; color: #666; }
   .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
+
+  #search {
+    background: #0e0e10;
+    border-color: #2a2a2e;
+    color: #f0f0f0;
+  }
+
+  #search:focus {
+    border-color: #f0f0f0;
+    background: #0e0e10;
+  }
 }
