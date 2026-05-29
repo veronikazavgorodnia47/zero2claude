@@ -135,10 +135,7 @@
       message: {
         el: document.getElementById('message'),
         error: document.getElementById('message-error'),
-        validate(val) {
-          if (!val) return 'Message is required.';
-          return '';
-        }
+        validate() { return ''; }
       }
     };
 
