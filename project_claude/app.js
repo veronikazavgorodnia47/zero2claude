@@ -28,16 +28,16 @@ const filterTabs = document.getElementById('filter-tabs');
 let activeCategory = 'All';
 let editingIndex = null;
 
-const categories = ['Uncategorized', 'Work', 'Personal', 'Reading', 'Tools', 'Other'];
-
 const categoryColors = {
+  Uncategorized: { bg: '#f0f0f5', text: '#555' },
   Work:          { bg: '#e8f0fe', text: '#1a56db' },
   Personal:      { bg: '#fce8f3', text: '#bf125d' },
   Reading:       { bg: '#fef3c7', text: '#92400e' },
   Tools:         { bg: '#d1fae5', text: '#065f46' },
   Other:         { bg: '#ede9fe', text: '#5b21b6' },
-  Uncategorized: { bg: '#f0f0f5', text: '#555' },
 };
+
+const categories = Object.keys(categoryColors);
 
 function loadBookmarks() {
   return JSON.parse(localStorage.getItem('bookmarks') || '[]');
@@ -125,7 +125,7 @@ function renderList(bookmarks) {
             <span class="bookmark-title">${escapeHTML(bookmark.title)}</span>
             <span class="category-badge" style="background:${color.bg};color:${color.text}">${escapeHTML(cat)}</span>
           </div>
-          <a class="bookmark-url" href="${escapeHTML(bookmark.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(bookmark.url)}</a>
+          <a class="bookmark-url" href="${isSafeUrl(bookmark.url) ? escapeHTML(bookmark.url) : '#'}" target="_blank" rel="noopener noreferrer">${escapeHTML(bookmark.url)}</a>
         </div>
         <div class="card-actions">
           <button class="edit-btn" data-index="${actualIndex}" aria-label="Edit bookmark" title="Edit">
@@ -152,6 +152,10 @@ function escapeHTML(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function isSafeUrl(url) {
+  return /^https?:\/\//i.test(url);
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const bookmarks = loadBookmarks();
@@ -170,8 +174,9 @@ form.addEventListener('submit', (e) => {
 
 list.addEventListener('click', (e) => {
   // Delete
-  if (e.target.matches('.delete-btn')) {
-    const index = parseInt(e.target.dataset.index);
+  const deleteBtn = e.target.closest('.delete-btn');
+  if (deleteBtn) {
+    const index = parseInt(deleteBtn.dataset.index);
     const bookmarks = loadBookmarks();
     bookmarks.splice(index, 1);
     saveBookmarks(bookmarks);
@@ -185,8 +190,9 @@ list.addEventListener('click', (e) => {
   }
 
   // Enter edit mode
-  if (e.target.matches('.edit-btn')) {
-    editingIndex = parseInt(e.target.dataset.index);
+  const editBtn = e.target.closest('.edit-btn');
+  if (editBtn) {
+    editingIndex = parseInt(editBtn.dataset.index);
     render();
     return;
   }
@@ -199,7 +205,7 @@ list.addEventListener('click', (e) => {
     const newUrl = li.querySelector('.edit-url').value.trim();
     const newCategory = li.querySelector('.edit-category').value;
 
-    if (!newTitle || !newUrl) return;
+    if (!newTitle || !newUrl || !isSafeUrl(newUrl)) return;
 
     const bookmarks = loadBookmarks();
     bookmarks[index] = { title: newTitle, url: newUrl, category: newCategory };
