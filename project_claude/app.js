@@ -1,3 +1,19 @@
+// Theme toggle — runs before render to avoid flash
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+document.body.classList.toggle('dark', isDark);
+document.body.classList.toggle('light', !isDark);
+themeToggle.textContent = isDark ? '☀️' : '🌙';
+
+themeToggle.addEventListener('click', () => {
+  const dark = document.body.classList.toggle('dark');
+  document.body.classList.toggle('light', !dark);
+  themeToggle.textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+});
+
 const form = document.getElementById('bookmark-form');
 const titleInput = document.getElementById('title');
 const urlInput = document.getElementById('url');

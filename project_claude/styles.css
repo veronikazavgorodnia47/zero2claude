@@ -27,6 +27,22 @@ nav {
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+#theme-toggle {
+  background: none;
+  border: 1.5px solid #e0e0e5;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  line-height: 1;
+}
+
+#theme-toggle:hover {
+  border-color: #1d1d1f;
 }
 
 .nav-logo {
@@ -307,81 +323,99 @@ select:focus {
   display: none;
 }
 
-/* Dark mode */
+/* Dark mode — applied via .dark class on body */
+body.dark { background: #0e0e10; color: #f0f0f0; }
+
+body.dark nav { background: #1a1a1d; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+
+body.dark .form-section,
+body.dark .list-section { background: #1a1a1d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+
+body.dark input {
+  background: #0e0e10;
+  border-color: #2a2a2e;
+  color: #f0f0f0;
+}
+
+body.dark input:focus {
+  border-color: #f0f0f0;
+  background: #0e0e10;
+}
+
+body.dark button[type="submit"] {
+  background: #f0f0f0;
+  color: #0e0e10;
+}
+
+body.dark button[type="submit"]:hover { background: #ccc; }
+
+body.dark label { color: #aaa; }
+
+body.dark #count { background: #2a2a2e; color: #aaa; }
+
+body.dark .bookmark-item { border-color: #2a2a2e; }
+body.dark .bookmark-item:hover { border-color: #444; }
+
+body.dark .bookmark-url { color: #666; }
+body.dark .bookmark-url:hover { color: #f0f0f0; }
+
+body.dark .delete-btn { border-color: #2a2a2e; color: #666; }
+body.dark .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
+
+body.dark #search {
+  background: #0e0e10;
+  border-color: #2a2a2e;
+  color: #f0f0f0;
+}
+
+body.dark #search:focus {
+  border-color: #f0f0f0;
+  background: #0e0e10;
+}
+
+body.dark select {
+  background: #0e0e10;
+  border-color: #2a2a2e;
+  color: #f0f0f0;
+}
+
+body.dark select:focus {
+  border-color: #f0f0f0;
+  background: #0e0e10;
+}
+
+body.dark .filter-tab { border-color: #2a2a2e; color: #aaa; }
+body.dark .filter-tab:hover { border-color: #f0f0f0; color: #f0f0f0; }
+body.dark .filter-tab.active { background: #f0f0f0; border-color: #f0f0f0; color: #0e0e10; }
+
+body.dark #theme-toggle { border-color: #2a2a2e; }
+body.dark #theme-toggle:hover { border-color: #f0f0f0; }
+
+/* Apply dark mode by default if OS prefers it and no saved preference */
 @media (prefers-color-scheme: dark) {
-  body { background: #0e0e10; color: #f0f0f0; }
-
-  nav { background: #1a1a1d; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
-
-  .form-section,
-  .list-section { background: #1a1a1d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-
-  input {
-    background: #0e0e10;
-    border-color: #2a2a2e;
-    color: #f0f0f0;
-  }
-
-  input:focus {
-    border-color: #f0f0f0;
-    background: #0e0e10;
-  }
-
-  button[type="submit"] {
-    background: #f0f0f0;
-    color: #0e0e10;
-  }
-
-  button[type="submit"]:hover { background: #ccc; }
-
-  label { color: #aaa; }
-
-  #count { background: #2a2a2e; color: #aaa; }
-
-  .bookmark-item { border-color: #2a2a2e; }
-  .bookmark-item:hover { border-color: #444; }
-
-  .bookmark-url { color: #666; }
-  .bookmark-url:hover { color: #f0f0f0; }
-
-  .delete-btn { border-color: #2a2a2e; color: #666; }
-  .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
-
-  #search {
-    background: #0e0e10;
-    border-color: #2a2a2e;
-    color: #f0f0f0;
-  }
-
-  #search:focus {
-    border-color: #f0f0f0;
-    background: #0e0e10;
-  }
-
-  select {
-    background: #0e0e10;
-    border-color: #2a2a2e;
-    color: #f0f0f0;
-  }
-
-  select:focus {
-    border-color: #f0f0f0;
-    background: #0e0e10;
-  }
-
-  .filter-tab {
-    border-color: #2a2a2e;
-    color: #aaa;
-  }
-
-  .filter-tab:hover {
-    border-color: #f0f0f0;
-    color: #f0f0f0;
-  }
-
-  .filter-tab.active {
-    background: #f0f0f0;
-    border-color: #f0f0f0;
-    color: #0e0e10;
-  }
+  body:not(.light) { background: #0e0e10; color: #f0f0f0; }
+  body:not(.light) nav { background: #1a1a1d; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+  body:not(.light) .form-section,
+  body:not(.light) .list-section { background: #1a1a1d; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+  body:not(.light) input { background: #0e0e10; border-color: #2a2a2e; color: #f0f0f0; }
+  body:not(.light) input:focus { border-color: #f0f0f0; background: #0e0e10; }
+  body:not(.light) button[type="submit"] { background: #f0f0f0; color: #0e0e10; }
+  body:not(.light) button[type="submit"]:hover { background: #ccc; }
+  body:not(.light) label { color: #aaa; }
+  body:not(.light) #count { background: #2a2a2e; color: #aaa; }
+  body:not(.light) .bookmark-item { border-color: #2a2a2e; }
+  body:not(.light) .bookmark-item:hover { border-color: #444; }
+  body:not(.light) .bookmark-url { color: #666; }
+  body:not(.light) .bookmark-url:hover { color: #f0f0f0; }
+  body:not(.light) .delete-btn { border-color: #2a2a2e; color: #666; }
+  body:not(.light) .delete-btn:hover { border-color: #ff3b30; color: #ff3b30; background: #1f1010; }
+  body:not(.light) #search { background: #0e0e10; border-color: #2a2a2e; color: #f0f0f0; }
+  body:not(.light) #search:focus { border-color: #f0f0f0; background: #0e0e10; }
+  body:not(.light) select { background: #0e0e10; border-color: #2a2a2e; color: #f0f0f0; }
+  body:not(.light) select:focus { border-color: #f0f0f0; background: #0e0e10; }
+  body:not(.light) .filter-tab { border-color: #2a2a2e; color: #aaa; }
+  body:not(.light) .filter-tab:hover { border-color: #f0f0f0; color: #f0f0f0; }
+  body:not(.light) .filter-tab.active { background: #f0f0f0; border-color: #f0f0f0; color: #0e0e10; }
+  body:not(.light) #theme-toggle { border-color: #2a2a2e; }
+  body:not(.light) #theme-toggle:hover { border-color: #f0f0f0; }
 }
