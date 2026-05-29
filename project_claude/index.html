@@ -28,6 +28,17 @@
           <label for="url">URL</label>
           <input type="url" id="url" placeholder="https://example.com" required />
         </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category">
+            <option value="Uncategorized">Uncategorized</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Reading">Reading</option>
+            <option value="Tools">Tools</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
         <button type="submit">Add Bookmark</button>
       </form>
     </section>
@@ -37,6 +48,7 @@
         <h2>Saved Bookmarks <span id="count"></span></h2>
         <input type="search" id="search" placeholder="Search by title..." />
       </div>
+      <div class="filter-tabs" id="filter-tabs"></div>
       <ul id="bookmark-list"></ul>
       <p id="empty-msg">No bookmarks yet. Add one above.</p>
       <p id="no-results">No bookmarks match your search.</p>

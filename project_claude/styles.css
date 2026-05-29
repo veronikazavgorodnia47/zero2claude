@@ -163,6 +163,72 @@ button[type="submit"]:hover {
   display: none;
 }
 
+/* Category filter tabs */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.filter-tab {
+  padding: 5px 14px;
+  border: 1.5px solid #e0e0e5;
+  border-radius: 20px;
+  background: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #555;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.filter-tab:hover {
+  border-color: #1d1d1f;
+  color: #1d1d1f;
+}
+
+.filter-tab.active {
+  background: #1d1d1f;
+  border-color: #1d1d1f;
+  color: #fff;
+}
+
+/* Category badge on bookmark card */
+.bookmark-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Select input */
+select {
+  padding: 10px 14px;
+  border: 1.5px solid #e0e0e5;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #fafafa;
+  color: #1d1d1f;
+  outline: none;
+  transition: border-color 0.15s;
+  cursor: pointer;
+}
+
+select:focus {
+  border-color: #1d1d1f;
+  background: #fff;
+}
+
 #bookmark-list {
   list-style: none;
   display: flex;
@@ -290,5 +356,32 @@ button[type="submit"]:hover {
   #search:focus {
     border-color: #f0f0f0;
     background: #0e0e10;
+  }
+
+  select {
+    background: #0e0e10;
+    border-color: #2a2a2e;
+    color: #f0f0f0;
+  }
+
+  select:focus {
+    border-color: #f0f0f0;
+    background: #0e0e10;
+  }
+
+  .filter-tab {
+    border-color: #2a2a2e;
+    color: #aaa;
+  }
+
+  .filter-tab:hover {
+    border-color: #f0f0f0;
+    color: #f0f0f0;
+  }
+
+  .filter-tab.active {
+    background: #f0f0f0;
+    border-color: #f0f0f0;
+    color: #0e0e10;
   }
 }
